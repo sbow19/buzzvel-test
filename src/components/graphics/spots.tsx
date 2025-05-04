@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import * as styles from "./spots.module.css";
 
 // import { useEffect, useState } from "react";

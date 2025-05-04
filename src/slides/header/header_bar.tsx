@@ -9,7 +9,7 @@ import useResize from "@/hooks/useResize";
 import { ButtonTemplate } from "@/components/buttons/button_template";
 import { appStyles } from "@/components/styles/prog_styles";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const HeaderBar = () => {
   // Track the screen width

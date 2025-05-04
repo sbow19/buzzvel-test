@@ -3,7 +3,7 @@
 import * as styles from "./figures.module.css";
 import * as slideStyles from "../../slides_styles.module.css";
 import { FigureItem } from "@/components/graphics/figure_item";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export const Figures = () => {
   return (

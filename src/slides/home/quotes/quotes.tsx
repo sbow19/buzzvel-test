@@ -12,7 +12,7 @@ import {
   useScroll,
   useSpring,
   useTransform,
-} from "motion/react";
+} from "framer-motion";
 import { text } from "@/animations/animations";
 import { useEffect, useRef, useState } from "react";
 

@@ -13,7 +13,7 @@ import { appStyles } from "@/components/styles/prog_styles";
 import useResize from "@/hooks/useResize";
 
 import { text, cards } from "@/animations/animations";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export const AllInOne = () => {
   const screenWidth = useResize();

@@ -15,7 +15,7 @@ import Image from "next/image";
 import useResize from "@/hooks/useResize";
 import { useMemo } from "react";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { text } from "@/animations/animations";
 
 export const TeachWW = () => {

@@ -11,7 +11,7 @@ import { FeaturesImage } from "@/components/images/features_img";
 import useResize from "@/hooks/useResize";
 
 import { text, cardRows } from "@/animations/animations";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export const Features = () => {
   // TODO: Resize blob on screen  size change

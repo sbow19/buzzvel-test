@@ -1,6 +1,6 @@
 "use client";
 
-import {  motion } from "motion/react";
+import {  motion } from "framer-motion";
 import * as styles from "./icons.module.css";
 import { useEffect, useState } from "react";
 

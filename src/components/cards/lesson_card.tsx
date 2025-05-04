@@ -1,7 +1,7 @@
 import * as styles from "./lesson_card.module.css";
 import { LessonButton } from "../buttons/default_buttons";
 import { BannerBadge } from "../banner_badge/banner_badge";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export const LessonCard = ({
   headerText,

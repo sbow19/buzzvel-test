@@ -4,7 +4,7 @@ import { TestimonialCard } from "@/components/cards/testimonial_card";
 import * as styles from "./testimonial_carousel.module.css";
 import { NavButtonLeft, NavButtonRight } from "@/components/buttons/nav_button";
 
-import { motion, useAnimation, useMotionValue } from "motion/react";
+import { motion, useAnimation, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import useResize from "@/hooks/useResize";
 

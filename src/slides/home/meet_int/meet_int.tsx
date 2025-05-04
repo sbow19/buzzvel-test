@@ -7,7 +7,7 @@ import { Airplane } from "@/components/graphics/airplane";
 import Image from "next/image";
 import useResize from "@/hooks/useResize";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { text } from "@/animations/animations";
 
 export const MeetInt = () => {

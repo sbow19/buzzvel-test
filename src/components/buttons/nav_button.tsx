@@ -1,12 +1,12 @@
 import * as styles from "./nav_button.module.css";
 
-export const NavButtonLeft = () => {
+export const NavButtonLeft = ({ onClick }) => {
   return (
-    <button className={styles.default_style}>
+    <button className={styles.default_style} onClick={onClick}>
       <svg
         width="54"
         height="55"
-        viewBox="0 0 54 55"
+        viewBox="0 0 57 55"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -90,13 +90,13 @@ export const NavButtonLeft = () => {
   );
 };
 
-export const NavButtonRight = () => {
+export const NavButtonRight = ({ onClick }) => {
   return (
-    <button className={styles.default_style}>
+    <button className={styles.default_style} onClick={onClick}>
       <svg
         width="54"
         height="55"
-        viewBox="0 0 54 55"
+        viewBox="0 0 57 55"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

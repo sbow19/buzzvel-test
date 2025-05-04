@@ -1,13 +1,36 @@
-.blob_wrapper g path{
-    animation: sparkle 2s ease-in infinite;
+
+.blob_wrapper g:nth-child(odd) path {
+    animation: sparkle1 3s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  
+  .blob_wrapper g:nth-child(even) path {
+    animation: sparkle2 1.5s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+@keyframes sparkle1 {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  33%,
+  66% {
+    transform: scale(1.3);
+  }
 }
 
-@keyframes sparkle {
-    from{
-        transform: scale(2);
+@keyframes sparkle2 {
+    0%,
+    100% {
+      transform: scale(1);
     }
-
-    to {
-        transform: scale(1);
+  
+    33%,
+    66% {
+      transform: scale(1.5);
     }
-}
+  }

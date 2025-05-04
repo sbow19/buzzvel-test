@@ -192,6 +192,7 @@
     padding: 0px;
     gap: 48px;
 
+
     width: 528px;
     height: 325px;
 
@@ -216,8 +217,21 @@
     top: -5%
   }
 
+  .spin_block {
+    top: -25%;
+    left: -40%;
+    z-index: 0;
+  }
   .square_grid {
     
     left:0
-}
+  }
+
+  .quote_icon_wrapper {
+    top: -7%;
+    left:10%;
+    z-index:10
+
+   
+  }
 }

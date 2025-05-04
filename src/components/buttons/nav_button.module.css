@@ -1,4 +1,14 @@
 .default_style{
     background-color: var(--white);
-    border: none;
+    border: none; 
+    overflow: hidden;
+}
+
+.default_style::after {
+    background-color: white;
+    position:absolute
+}
+.default_style svg {
+    position: relative;
+    z-index:3
 }

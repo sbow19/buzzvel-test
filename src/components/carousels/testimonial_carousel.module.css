@@ -1,0 +1,36 @@
+.carousel_container {
+  height: fit-content;
+  width: fit-content;
+
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+.button_wrapper {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .button_wrapper {
+    /* Arrows */
+
+    /* Auto layout */
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    align-items: flex-start;
+    top:80px;
+    right:80px;
+    padding: 0px;
+    gap: 24px;
+
+    width: 120px;
+    height: 48px;
+
+    /* Inside auto layout */
+    flex: none;
+    flex-grow: 0;
+  }
+}

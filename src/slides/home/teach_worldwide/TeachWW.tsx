@@ -44,7 +44,7 @@ export const TeachWW = () => {
   const speechSize = useMemo(() => {
     let scale = 1;
     if (screenWidth >= 960) {
-      scale = 1.2;
+      scale = 1.4;
     } else if (screenWidth >= 500) {
       scale = 1;
     } else {

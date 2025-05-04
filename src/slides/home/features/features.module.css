@@ -149,6 +149,9 @@
     align-self: stretch;
     flex-grow: 0;
   }
+  .content_wrapper{
+    margin: 0;
+  }
 
   .graphics_wrapper {
     /* Col */
@@ -197,11 +200,10 @@
   .content {
     /* Paragraph */
 
-    width: 600px;
+    width: 650px;
     height: 144px;
 
     /* Body/XL */
-    font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 180%;

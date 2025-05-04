@@ -1,48 +1,95 @@
 import { useEffect, useRef } from "react";
 import * as styles from "./floating_collage.module.css";
+import useResize from "@/hooks/useResize";
 
 export const FloatingCollage = ({ sceneItems }) => {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const collageSceneRef = useRef<CollageScene>(null);
+
+  const observerRef = useRef<IntersectionObserver>(null);
+
+  const handleAnimation = (entries) => {
+    for (const entry of entries) {
+      if (!collageSceneRef.current) return;
+      if (entry.isIntersecting) {
+        collageSceneRef.current.start();
+      } else {
+        collageSceneRef.current.stop();
+      }
+    }
+  };
 
   useEffect(() => {
     if (!canvasRef.current) return;
 
+    if (!observerRef.current) {
+      observerRef.current = new IntersectionObserver(handleAnimation, {
+        threshold: 0.25,
+      });
+
+      //Watch canvas appearing in viewport to trigger animation
+      observerRef.current.observe(canvasRef.current);
+    }
     // Set the scene
     const scene = new CollageScene(canvasRef.current, sceneItems);
     collageSceneRef.current = scene;
 
-    // Start animation sequence
-    collageSceneRef.current.start();
+    // Get graphics container size
+    const graphicsContainer = document.getElementById(
+      "graphics_container_t"
+    ) as HTMLDivElement;
 
-    canvasRef.current.width = window.innerWidth;
-    canvasRef.current.height = window.innerHeight;
+    if (!graphicsContainer) return;
+
+    canvasRef.current.width = graphicsContainer.clientWidth;
+    canvasRef.current.height = graphicsContainer.clientHeight;
     canvasRef.current.style.width = `${canvasRef.current.width}px`;
     canvasRef.current.style.height = `${canvasRef.current.height}px`;
 
     window.addEventListener("resize", () => {
-      canvasRef.current.width = window.innerWidth;
-      canvasRef.current.height = window.innerHeight;
+      if (!canvasRef.current) return;
+      canvasRef.current.width = graphicsContainer.clientWidth;
+      canvasRef.current.height = graphicsContainer.clientHeight;
       canvasRef.current.style.width = `${canvasRef.current.width}px`;
       canvasRef.current.style.height = `${canvasRef.current.height}px`;
+      collageSceneRef.current?.resize();
     });
-  }, [sceneItems]);
 
-  //
+    return () => {
+      if (collageSceneRef.current) {
+        collageSceneRef.current = null;
+      }
+    };
+  }, []);
+
+  const screenWidth = useResize()
+  useEffect(()=>{
+    if(!collageSceneRef.current) return
+    collageSceneRef.current.resize()
+  }, [screenWidth])
 
   return <canvas ref={canvasRef} className={styles.wrapper} />;
 };
 
 // Control animation behavour and location of elements on screen
+type SourceItem = {
+  src: "";
+  type: "";
+};
 class CollageScene {
   canvas: HTMLCanvasElement | null = null;
   ctx: CanvasRenderingContext2D | null = null;
   sceneItems: CollageItem[] = [];
-  constructor(canvas: HTMLCanvasElement, sceneItems: string[]) {
+  animationId: number | null = null;
+  scales: number[] = [];
+  directions: number[] = [];
+  windowWidth: number  = 0
+
+  constructor(canvas: HTMLCanvasElement, sceneItems: SourceItem[]) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
 
-    const sizeArray = [16, 32, 64];
+    const sizeArray = [16, 32, 48];
     // Create collage items
     for (const item of sceneItems) {
       if (!item) continue;
@@ -50,62 +97,93 @@ class CollageScene {
       const randSize = Math.floor(Math.random() * 3);
 
       // Push items onto scene object
-      this.sceneItems.push(new CollageItem(item, sizeArray[randSize], null));
+      this.sceneItems.push(
+        new CollageItem(item.src, item.type, sizeArray[randSize], null)
+      );
     }
 
     // Place items on scene
     if (this.sceneItems.length === 0) return;
     this.placeItems();
+
+    // Set window width
+    this.windowWidth = window.innerWidth
+  }
+
+  // Restart animation on resize
+  resize() {
+
+    // Check if resize crossed boundary
+    const width = window.innerWidth;
+
+    // If the resizing crossed the 960 threshold, trigger resize
+    if(width < 960 && this.windowWidth >= 960){
+      this.placeItems()
+    } else if (width >= 960 && this.windowWidth < 960){
+      this.placeItems()
+    }
+
+    this.windowWidth = width 
   }
 
   // Start animation loop
   start() {
-    // Add a growing and shrinking, randomly timed
-    for (let item of this.sceneItems) {
-      const scales = [];
-      const directions = [];
+    for (const item of this.sceneItems) {
+      // Initialize scale and direction of scaling for each item
+      for (let i = 0; i < this.sceneItems.length; i++) {
+        this.scales[i] = 1;
+        this.directions[i] = Math.random() < 0.5 ? 1 : -1;
+      }
+    }
+
+    // start animation for all items
+    const animateAll = () => {
+      // Clear context for next render cycle
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
       const minSize = 16;
       const maxSize = 64;
       const amplitude = (maxSize - minSize) / 2;
       const midpoint = minSize + amplitude;
 
-      // Initialize scale and direction for each item
       for (let i = 0; i < this.sceneItems.length; i++) {
-        scales[i] = 1;
-        directions[i] = Math.random() < 0.5 ? 1 : -1;
+        const item = this.sceneItems[i];
+        const scale = this.scales[i];
+        const direction = this.directions[i];
+
+        const currentSize = midpoint + amplitude * Math.cos(scale);
+
+        this.ctx.drawImage(
+          item.img,
+          item.imgPosition.x - currentSize / 2,
+          item.imgPosition.y - currentSize / 2,
+          currentSize,
+          currentSize
+        );
+
+        // Update scale for next frame
+        this.scales[i] += Math.random() * 0.02 * direction;
       }
 
-      const animateAll = () => {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      // Store animation ids to pause and start on demand
+      this.animationId = requestAnimationFrame(animateAll);
+    };
 
-        for (let i = 0; i < this.sceneItems.length; i++) {
-          const item = this.sceneItems[i];
-          const scale = scales[i];
-          const direction = directions[i];
-
-          const currentSize = midpoint + amplitude * Math.cos(scale);
-
-          this.ctx.drawImage(
-            item.img,
-            item.imgPosition.x - currentSize / 2,
-            item.imgPosition.y - currentSize / 2,
-            currentSize,
-            currentSize
-          );
-
-          // Update scale for next frame
-          scales[i] += Math.random() * 0.02 * direction;
-        }
-
-        requestAnimationFrame(animateAll);
-      };
-
-      animateAll();
-    }
+    // Start all animations
+    animateAll();
   }
 
-  // Place items on scene
+  // Stop animation loop
+  stop() {
+    if (!this.animationId) return;
+    cancelAnimationFrame(this.animationId);
+  }
+
+  /**
+   * Determine the places of the items on the canvas, taking into account
+   * the size of the canvas and avoiding overlap with other items as much
+   * as possible.
+   */
   placeItems() {
     if (!this.sceneItems) return;
 
@@ -125,14 +203,10 @@ class CollageScene {
           randX + sceneItem.defaultSize >
           canvasBoundingBox.right - canvasBoundingBox.x
         ) {
-          console.log(
-            randX + sceneItem.defaultSize,
-            canvasBoundingBox.right - canvasBoundingBox.x
-          );
-          randX -= sceneItem.defaultSize * 1.5;
+          randX -= sceneItem.defaultSize / 2;
         }
         if (randX - sceneItem.defaultSize < sceneItem.defaultSize) {
-          randX += sceneItem.defaultSize * 1.5;
+          randX += sceneItem.defaultSize / 2;
         }
 
         //Bring y point close into canvas
@@ -170,9 +244,19 @@ class CollageScene {
         }
       }
 
+      if (sceneItem.img) {
+        sceneItem.setImagePosition(randX, randY);
+        this.ctx?.drawImage(
+          sceneItem.img,
+          randX,
+          randY,
+          sceneItem.defaultSize,
+          sceneItem.defaultSize
+        );
+      }
       const img = new Image();
-      sceneItem.setImage(img, randX, randY);
-
+      sceneItem.setImage(img);
+      sceneItem.setImagePosition(randX, randY);
       img.src = sceneItem?.itemPath ?? "";
       // Fetch image
       img.onload = () => {
@@ -196,6 +280,7 @@ type BoundingBox = {
 
 class CollageItem {
   itemPath: string | null = null;
+  itemType: string = "";
   // Any number between 16x16, 32x32 or 64x64
   defaultSize: number = 16;
   imgPosition: {
@@ -204,10 +289,16 @@ class CollageItem {
   } | null = null;
   boundingBox: BoundingBox | null;
   img: null | HTMLImageElement = null;
-  constructor(itemPath: string, defaultSize: number, boundingBox: BoundingBox) {
+  constructor(
+    itemPath: string,
+    itemType: string,
+    defaultSize: number,
+    boundingBox: BoundingBox
+  ) {
     this.itemPath = itemPath;
     this.defaultSize = defaultSize;
     this.boundingBox = boundingBox;
+    this.itemType = itemType;
   }
 
   // Check whethe incoming bounding box overlaps with this item's box using AABB overlap formula
@@ -233,8 +324,11 @@ class CollageItem {
     this.boundingBox = boundingBox;
   }
 
-  setImage(img: HTMLImageElement, x: number, y: number) {
+  setImage(img: HTMLImageElement) {
     this.img = img;
+  }
+
+  setImagePosition(x: number, y: number) {
     this.imgPosition = {
       x,
       y,

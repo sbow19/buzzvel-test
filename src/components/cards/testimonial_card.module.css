@@ -20,6 +20,8 @@
   flex: none;
   order: 0;
   flex-grow: 0;
+
+  transition: transform 0.2s ease
 }
 
 .testimonial_content {
@@ -127,6 +129,11 @@
   order: 1;
   align-self: stretch;
   flex-grow: 0;
+}
+
+
+.testimonial_wrapper:active{
+  transform: scale(1.1);
 }
 
 @media (min-width: 768px) {

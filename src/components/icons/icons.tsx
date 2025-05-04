@@ -1,8 +1,8 @@
 "use client";
 
-import { easeIn, motion } from "motion/react";
+import {  motion } from "motion/react";
 import * as styles from "./icons.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const CompanyIcons = () => {
   return (
@@ -454,7 +454,6 @@ export const Waffle = ({ onClick }) => {
   const [droplet, setDroplet] = useState(false);
 
   const handleClick = () => {
-
     setDroplet(true);
 
     // Remove the droplet when animation complete
@@ -464,25 +463,28 @@ export const Waffle = ({ onClick }) => {
   };
 
   return (
-    <button onClick={()=>{
-      handleClick()
-      onClick()
-    }} className={styles.waffle}>
-      {
-        droplet &&
+    <button
+      onClick={() => {
+        handleClick();
+        onClick();
+      }}
+      className={styles.waffle}
+    >
+      {droplet && (
         <motion.div
           className={styles.click_droplet}
           animate={{
-            height:30,
-            width:30
+            height: 30,
+            width: 30,
           }}
           transition={{
             duration: 0.15,
-            ease: "easeOut"
-            
+            ease: "easeOut",
           }}
-        >""</motion.div>
-      }
+        >
+          ""
+        </motion.div>
+      )}
       <svg
         width="24"
         height="25"
@@ -577,7 +579,26 @@ export const Quote = ({ height = 46, width = 49 }) => {
   );
 };
 
-export const CirclePicker = () => {
+// Cycle  through with a timer.
+const ACTIVE_WIDTH = 32;
+const INACTIVE_WIDTH = 8;
+const SPACING = 6; 
+export const CirclePicker = ({ quotesLength, quoteIndex }) => {
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(quoteIndex);
+
+  useEffect(() => {
+    setCurrentQuoteIndex(quoteIndex);
+  }, [quoteIndex]);
+
+  // Compute x position dynamically per rect based on prior widths
+  const getXPos = (index) => {
+    let x = 0;
+    for (let i = 0; i < index; i++) {
+      x += (i === currentQuoteIndex ? ACTIVE_WIDTH : INACTIVE_WIDTH) + SPACING;
+    }
+    return x;
+  };
+
   return (
     <svg
       width="96"
@@ -586,11 +607,29 @@ export const CirclePicker = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="32" height="8" rx="4" fill="#0F172A" />
-      <rect x="40" width="8" height="8" rx="4" fill="white" />
-      <rect x="56" width="8" height="8" rx="4" fill="white" />
-      <rect x="72" width="8" height="8" rx="4" fill="white" />
-      <rect x="88" width="8" height="8" rx="4" fill="white" />
+      {Array.from({ length: quotesLength }).map((_, i) => {
+        const isActive = i === currentQuoteIndex;
+        const width = isActive ? ACTIVE_WIDTH : INACTIVE_WIDTH;
+        const x = getXPos(i);
+
+        return (
+          <motion.rect
+            key={i}
+            height="8"
+            rx="4"
+            animate={{
+              x,
+              width,
+              fill: isActive ? "#0f172a" : "#FFFFFF", 
+            }}
+            transition={{
+              duration: 0.4,
+              ease: "easeInOut",
+            }}
+          />
+        );
+      })}
+
     </svg>
   );
 };
@@ -836,7 +875,7 @@ export const ShoppingCart = () => {
   );
 };
 
-export const BibgB = () => {
+export const BigB = () => {
   return (
     <svg
       width="48"

@@ -1,0 +1,57 @@
+.demo_form_email {
+  font-size: 14px;
+  font-weight: 500;
+  width: 361px;
+  min-height: 92px;
+}
+
+.demo_form_message {
+  font-size: 14x;
+  font-weight: 500;
+  width: 361px;
+  min-height: 122px;
+}
+
+.email_input {
+  /* Rectangle 130 */
+  width: 100%;
+  height: 50px;
+
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0 16px;
+  border: none
+}
+
+.email_input::placeholder, .message_input::placeholder {
+  color: var(--gray)
+}
+
+.message_input {
+  /* Rectangle 130 */
+  width: 91%;
+  height: 80px;
+  padding: 16px 16px 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.demo_form label {
+    display: block;
+    font-size: 18px;
+    color: var(--white);
+    margin-bottom: 16px
+}
+
+.demo_form {
+    background-color: var(--orange);
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    row-gap: 32px;
+    width:100%
+}
+
+

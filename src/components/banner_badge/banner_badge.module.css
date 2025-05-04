@@ -1,0 +1,9 @@
+.banner { 
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    height:24px;
+    width: fit-content;
+  
+  }

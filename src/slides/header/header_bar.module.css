@@ -1,0 +1,154 @@
+.header_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: space-between;
+  padding: 0;
+  gap: 202px;
+  background-color: var(--white);
+
+  height: 67px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.header_nav_options {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
+}
+
+.logo{
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+.header_nav_options a {
+  display: block;
+  text-decoration: none;
+  text-decoration-line: none;
+  color: var(--blue-gray);
+  background-color: var(--white);
+  padding-left: 16px;
+  height: 48px;
+  font-size: 16px;
+  width: 100%;
+  text-align: left;
+  font-weight: 500;
+}
+
+@media (min-width: 960px) {
+  .header_wrapper {
+    /* Header */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 80px;
+    height: 96px;
+    gap:0
+
+  }
+  .header_nav_options {
+    position: relative;
+    z-index: 0;
+    /* Menu */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    gap: 48px;
+
+    width: 515px;
+    height: 48px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  .header_nav_options a {
+    margin-top: 0px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .logo {
+    margin-right: 48px
+  }
+  
+}
+
+.account_button_wrapper {
+  /* Buttons Group */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0px;
+  gap: 16px;
+
+  margin-left: auto;
+  width: 232px;
+  height: 48px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.log_in {
+  /* Menu-item */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 8px;
+  gap: 8px;
+
+  width: 63px;
+  height: 48px;
+
+  color: var(--blue-gray);
+  border: none;
+  background-color: var(--white);
+
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.sign_up {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}

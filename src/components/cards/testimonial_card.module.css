@@ -1,0 +1,145 @@
+.testimonial_wrapper {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  isolation: isolate;
+
+  width: 309px;
+  height: 323px;
+
+  /* White */
+  background: #ffffff;
+  /* Shadow/Dark/L */
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0px 0px 6px rgba(0, 0, 0, 0.07);
+  border-radius: 20px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.testimonial_content {
+  /* Paragraph */
+  width: 277px;
+  height: 203px;
+
+  /* Body/L */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+
+  /* Black */
+  color: #000000;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.testimonial_profile_wrapper {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 0px 0px;
+  gap: 16px;
+
+  width: 277px;
+  height: 80px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.testimonial_profile_pic_wrapper {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+
+  width: 64px;
+  height: 64px;
+
+  border-radius: 100px;
+
+  overflow: hidden;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.testimonial_name {
+  /* Category */
+  width: 197px;
+  height: 29px;
+
+  /* Body/L */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+
+  /* Black */
+  color: var(--black);
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.testimonial_occupation {
+  /* Category */
+
+  width: 197px;
+  height: 22px;
+
+  /* Body/M */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  /* or 22px */
+
+  /* Blue Gray/600 */
+  color: var(--blue-gray-600);
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+@media (min-width: 768px) {
+  .testimonial_wrapper {
+    width: 412px;
+    height: 305px;
+    padding: 28px;
+    row-gap:12px;
+  }
+  .testimonial_content {
+    /* Paragraph */
+    width: 348px;
+    height: 145px;
+  }
+  
+}

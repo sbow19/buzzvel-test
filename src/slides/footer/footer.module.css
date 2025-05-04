@@ -1,0 +1,249 @@
+.footer {
+  /* Footer */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+  gap: 32px;
+  padding-top: 32px;
+
+  width: 100%;
+
+  /* Blue Gray/900 */
+  background: var(--blue-gray);
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.link_item_wrapper {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 32px;
+
+  width: 100%;
+  height: 226px;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.link_item_header {
+  /* Footer Components/Link/Footer Components/Link */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 0px;
+  gap: 8px;
+  width: 100%;
+  height: 42px;
+
+  /* Subtitle/M */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 110%;
+
+  /* White */
+  color: var(--white);
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.link_item {
+  /* Footer Components/Link/Footer Components/Link */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 0px;
+  gap: 8px;
+
+  width: 100%;
+  height: 46px;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.link_path {
+  /* Body/M */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  text-decoration: none;
+
+  /* Blue Gray/200 */
+  color: var(--blue-gray-200);
+}
+
+.divider {
+  width: 100%;
+  background-color: var(--blue-gray-200);
+  margin: 0;
+}
+
+.bottom_wrapper {
+  /* Bottom */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  width: 100%;
+  height: 142px;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.copyright {
+  /* CompanyName @ 202X. All rights reserved. */
+
+  width: 100%;
+  height: 22px;
+
+  /* Body/M */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  /* or 22px */
+
+  /* Blue Gray/200 */
+  color: var(--blue-gray-200);
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.bottom_link_wrapper {
+  /* Footer Components/Vertical-Menu */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+
+  width: 100%;
+  height: 48px;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.bottom_link_wrapper li {
+  list-style: none;
+}
+.bottom_link_wrapper a {
+  text-decoration: none;
+  color: var(--blue-gray-200);
+}
+@media (min-width: 960px) {
+  .footer {
+    /* Auto layout */
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px 80px;
+
+    width: 100%;
+    height: fit-content;
+  }
+  .link_list {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 48px 0px;
+    gap: 48px;
+
+    width: 100%;
+    height: 324px;
+  }
+  .bottom_wrapper {
+    /* Bottom */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 24px 0px;
+    gap: 48px;
+
+    width: 100%;
+    height: 96px;
+  }
+  .bottom_link_wrapper {
+    /* Footer Components/Vertical-Menu */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    gap: 32px;
+
+    width: 35%;
+    height: 48px;
+
+  
+  }
+
+  .copyright {
+    /* CompanyName @ 202X. All rights reserved. */
+
+    width: 50%;
+    height: 22px;
+
+    /* Body/M */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  .link_item_wrapper {
+    /* Footer Components/Column */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    width: 173.33px;
+    height: 226px;
+  }
+}

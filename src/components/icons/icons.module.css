@@ -1,0 +1,43 @@
+.waffle {
+  background-color: var(--white);
+  border: none;
+  position: relative
+}
+
+.waffle::after{
+  height:0;
+  width:0;
+  background-color: none;
+}
+
+.click_droplet {
+  position:absolute;
+  background-color: var(--orange);
+  opacity: 0.3;
+  color: transparent;
+  width: 20px;
+  height: 20px;
+  left: 12px;
+  top:30px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.alt_teach_logo {
+  /* Links */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  column-gap: 4px;
+
+  height: 35px;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}

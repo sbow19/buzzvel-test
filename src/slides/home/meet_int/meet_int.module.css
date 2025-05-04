@@ -1,0 +1,217 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 16px;
+  gap: 32px;
+
+  width: 100%;
+  height: 700.5px;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.content_wrapper {
+  /* Section Text */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  width: calc(100vw - 32px);
+  max-width: 450px;
+  margin:0 auto;
+  height: 263px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  z-index: 0;
+}
+
+.header {
+  height: 57px;
+  font-size: 24px;
+  font-weight: 700;
+  position: relative;
+  width: 361px
+}
+
+.content {
+  height: 110px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+
+  /* Blue Gray/900 */
+  color: var(--blue-gray);
+}
+
+.graphics_wrapper {
+  /* Col */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 0px;
+
+  width: calc(100vw);
+
+  height: 309.5px;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+  z-index: 1;
+}
+
+.airplane_wrapper{
+  position:absolute;
+  top: -18px;
+  left: 43%
+}
+
+.column {
+  flex: 1 1 200px;
+  max-width: 94px;
+}
+.flex_image {
+  width: auto;
+}
+
+@media (min-width: 960px) {
+  .wrapper {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 80px;
+    gap:80px;
+
+    width: 100%;
+    height: 811px;
+
+    /* Inside auto layout */
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .graphics_wrapper {
+    /* Col */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    width: 600px;
+    height: 651px;
+  }
+  .content_wrapper{
+    justify-content: center;
+    height: 100%
+  }
+
+  .airplane_wrapper{
+    position:absolute;
+    top: -40%;
+    left: 65%
+  }
+  .content {
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    gap: 32px;
+
+    width: 600px;
+    height: 388px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  .header {
+    /* Secondary Headline */
+
+    width: 600px;
+    height: 124px;
+
+    /* Heading/2 */
+    font-style: normal;
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 110%;
+    /* or 62px */
+
+    /* Blue Gray/900 */
+    color: var(--blue-gray);
+
+    /* Inside auto layout */
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+  .content {
+    /* Paragraph */
+
+    width: 600px;
+    height: 144px;
+
+    /* Body/XL */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 180%;
+    /* or 36px */
+
+    /* Blue Gray/900 */
+    color: var(--blue-gray);
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+  .column {
+    min-width: 170px;
+  }
+
+  .graphics_wrapper > :nth-child(1) > :first-child{
+    width:75%;
+    justify-self: flex-end;
+
+  }
+
+  .graphics_wrapper > :nth-child(2){
+      min-width: 175px;
+  }
+  .graphics_wrapper > :last-child > :last-child{
+    width:75%;
+    justify-self: flex-start;
+
+  }
+  .flex_image {
+    width: 100%;
+    height: auto;
+    display: block
+  }
+}

@@ -1,0 +1,40 @@
+.wrapper {
+  /* Section */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 0;
+  gap: 48px;
+
+  width: 100%;
+  height: 657px;
+
+  /* Blue Gray/900 */
+  background: var(--blue-gray);
+
+  /* Inside auto layout */
+  flex: none;
+  flex-grow: 0;
+}
+
+
+@media (min-width: 960px) {
+    .wrapper {
+      /* Section */
+  
+      /* Auto layout */
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 80px;
+      gap: 80px;
+  
+      width: 100%;
+      height: 373px;
+  
+    }
+  }

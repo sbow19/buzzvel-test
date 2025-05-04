@@ -1,0 +1,12 @@
+.wrapper {
+
+  max-height: 215px;
+  width: auto;
+
+  /* White */
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  z-index: 3;
+}

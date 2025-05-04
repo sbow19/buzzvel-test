@@ -1,0 +1,13 @@
+.blob_wrapper g path{
+    animation: sparkle 2s ease-in infinite;
+}
+
+@keyframes sparkle {
+    from{
+        transform: scale(2);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}

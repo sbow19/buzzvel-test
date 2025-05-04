@@ -1,0 +1,198 @@
+.orange_button {
+  /* Button */
+  background-color: var(--orange);
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+
+  width: 153px;
+  height: 48px;
+
+  border: 2px solid var(--orange);
+  border-radius: 8px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.blue_button {
+  /* Button */
+  background-color: var(--blue-gray);
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+
+  width: 153px;
+  height: 48px;
+
+  border: 2px solid var(--blue-gray);
+  border-radius: 8px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.view_demo_button {
+  /* Button */
+  background-color: var(--white);
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 8px;
+
+  width: 153px;
+  height: 48px;
+
+  border: none;
+  border-radius: 8px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.lesson_button {
+  /* Button */
+  background-color: var(--white);
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 8px;
+
+  width: 128px;
+  height: 40px;
+
+  border: 2px solid var(--blue);
+  border-radius: 8px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+
+  margin: 16px auto;
+}
+
+.button_text {
+  /* Font size */
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.demo_text {
+  /* Font size */
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--blue);
+  padding: 0px 16px;
+}
+
+.lesson_text {
+  /* Font size */
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  color: var(--blue);
+  padding: 0px 8px;
+}
+
+@media (min-width: 960px) {
+  .orange_button {
+    padding: 20px 24px;
+
+    width: 239px;
+    height: 64px;
+  }
+  .blue_button {
+    padding: 20px 24px;
+
+    width: 239px;
+    height: 64px;
+  }
+  .view_demo_button {
+    padding: 16px 8px;
+    width: 239px;
+    height: 64px;
+  }
+  .button_text {
+    font-size: 24px;
+  }
+  .demo_text {
+    /* Font size */
+    font-size: 20px;
+  }
+}
+
+
+.cta_button {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--white);
+  border: none;
+  padding: 0px;
+  gap: 18px;
+
+  width: fit-content;
+  height: 48px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.cta_button > span {
+  color: var(--blue);
+  /* Button Text */
+
+  /* Button/M */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  min-width: 156px;
+
+  /* Blue/600 */
+  color: #2563eb;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+@media (min-width: 768px){
+  .cta_button > span {
+    font-size: 20px;
+
+  }
+
+}

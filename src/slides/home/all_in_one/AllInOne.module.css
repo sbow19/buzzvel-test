@@ -1,0 +1,229 @@
+.wrapper {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+
+  width: 100%;
+  height: 1124px;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.checklist_wrapper {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.header {
+  /* Main Headline */
+  width: calc(100vw - 32px);
+  height: 52px;
+
+  /* Heading/6 */
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 110%;
+  color: var(--blue-gray);
+  max-width: 600px;
+  margin:0 auto;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.content {
+  /* Paragraph */
+  width: calc(100vw - 32px);
+  max-width: 600px;
+  margin:0 auto;
+
+  height: 88px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+
+  /* Blue Gray/900 */
+  color: var(--blue-gray);
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.checklist {
+  /* List */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: calc(100vw - 32px);
+  max-width: 600px;
+  margin:0 auto;
+  gap: 16px;
+
+  height: 248px;
+  list-style: none;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+  z-index: 4;
+}
+
+.list_wrapper {
+  /* List Item With */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 0px;
+  gap: 8px;
+
+  width: 361px;
+  height: 72px;
+
+  /* Inside auto layout */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.list_text {
+  /* Text */
+
+  width: 329px;
+  padding-right: 16px;
+
+  /* Body/XL */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 180%;
+
+  /* Blue Gray/900 */
+  color: var(--blue-gray);
+
+  /* Inside auto layout */
+  flex: none;
+  flex-grow: 1;
+}
+
+.button_wrapper {
+  position: relative;
+  width: calc(100vw - 32px);
+  max-width: 600px;
+  margin:0 auto;
+}
+
+.spots_container {
+  position: absolute;
+  top: -200%;
+  right: 50%;
+  pointer-events: none;
+}
+
+.graphics_wrapper {
+  height: 50%;
+  width: calc(100vw - 32px);
+  max-width: 600px;
+  margin:0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  z-index: 3;
+  position: relative;
+}
+
+.blob_wrapper {
+  position: absolute;
+  transform: rotate(30deg) skewX(-25deg) scaleX(1.2);
+  z-index: -1;
+}
+
+.lessons_wrapper {
+  /* Row */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  position: relative;
+  width: 336px;
+  height: 232px;
+  top: -10vh;
+  left: 10%;
+}
+
+@media(min-width: 500px){
+  .blob_wrapper{
+    transform: rotate(30deg) skewX(-25deg) scaleX(2);
+
+  }
+  .graphics_wrapper{
+  width: calc(100vw - 128px);
+
+  }
+}
+
+@media (min-width: 960px) {
+  .header {
+    width: 544px;
+    height: 124px;
+    font-size: 56px;
+    font-weight: 800;
+    margin: unset
+  }
+
+  .checklist, .list_wrapper{
+    width: 544px;
+    margin: unset;
+  }
+  .button_wrapper{
+    margin:unset
+  }
+
+  .checklist{
+    height:fit-content
+  }
+
+  .list_wrapper{
+    height: 36px; 
+  }
+
+  .list_text{
+    font-size: 20px;
+  }
+
+  .lessons_wrapper{
+
+    top: -10vh;
+    left: -10%;
+
+  }
+
+  .wrapper{
+  }
+  
+}

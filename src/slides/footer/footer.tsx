@@ -158,9 +158,6 @@ export const Footer = () => {
           <li>
             <Link href="">EUR</Link>
           </li>
-          <li>
-            <Link href=""></Link>
-          </li>
         </ul>
       </div>
     </footer>

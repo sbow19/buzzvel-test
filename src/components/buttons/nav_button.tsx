@@ -1,8 +1,12 @@
 import * as styles from "./nav_button.module.css";
 
-export const NavButtonLeft = ({ onClick }) => {
+export const NavButtonLeft = ({ onClick, ariaLabel }) => {
   return (
-    <button className={styles.default_style} onClick={onClick}>
+    <button
+      aria-label={ariaLabel}
+      className={styles.default_style}
+      onClick={onClick}
+    >
       <svg
         width="54"
         height="55"
@@ -90,9 +94,13 @@ export const NavButtonLeft = ({ onClick }) => {
   );
 };
 
-export const NavButtonRight = ({ onClick }) => {
+export const NavButtonRight = ({ onClick, ariaLabel }) => {
   return (
-    <button className={styles.default_style} onClick={onClick}>
+    <button
+      aria-label={ariaLabel}
+      className={styles.default_style}
+      onClick={onClick}
+    >
       <svg
         width="54"
         height="55"

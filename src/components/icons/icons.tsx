@@ -464,6 +464,7 @@ export const Waffle = ({ onClick }) => {
 
   return (
     <button
+      aria-label="Open menu"
       onClick={() => {
         handleClick();
         onClick();

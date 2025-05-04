@@ -124,6 +124,9 @@ export const TeachWW = () => {
             src="/images/student_phone.png"
             width={500}
             height={500}
+
+            // Identified as LCP, so loading eagerly
+            loading="eager"
             alt=""
             className={styles.student}
           />

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Teachers Buzzvel",
     type: "website",
     description: "A platform for connecting teachers and students",
-    url: "",
+    url: "https://buzzvel-test-eta.vercel.app/",
 
     // For the home segment, we can place an image in the directory of the
     // route segment, eg Home, and Nextjs will automatically at the header tags
@@ -82,6 +82,7 @@ const jsonLd = {
   datePublished: "2024-01-11T11:35:00+07:00",
   dateModified: "2024-01-11T11:35:00+07:00",
   inLanguage: "en-US",
+  url: "https://buzzvel-test-eta.vercel.app/",
   isFamilyFriendly: true,
 };
 

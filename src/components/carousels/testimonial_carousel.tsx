@@ -115,11 +115,13 @@ export const TestimonialCarousel = () => {
           onClick={() => {
             handleClick(1);
           }}
+          ariaLabel="Previous testimonial"
         />
         <NavButtonRight
           onClick={() => {
             handleClick(-1);
           }}
+          ariaLabel="Next testimonial"
         />
       </div>
 

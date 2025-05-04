@@ -2,25 +2,37 @@
 "use client";
 import * as defaultButtonStyles from "./default_button.module.css";
 
-export const OrangeButton = ({ onClick, text }) => {
+export const OrangeButton = ({ onClick, text, ariaLabel }) => {
   return (
-    <button onClick={onClick} className={defaultButtonStyles.orange_button}>
+    <button
+      onClick={onClick}
+      className={defaultButtonStyles.orange_button}
+      aria-label={ariaLabel}
+    >
       <span className={defaultButtonStyles.button_text}>{text}</span>
     </button>
   );
 };
 
-export const BlueButton = ({ onClick, text }) => {
+export const BlueButton = ({ onClick, text, ariaLabel }) => {
   return (
-    <button onClick={onClick} className={defaultButtonStyles.blue_button}>
+    <button
+      onClick={onClick}
+      className={defaultButtonStyles.blue_button}
+      aria-label={ariaLabel}
+    >
       <span className={defaultButtonStyles.button_text}>{text}</span>
     </button>
   );
 };
 
-export const DemoButton = ({ onClick, text }) => {
+export const DemoButton = ({ onClick, text, ariaLabel }) => {
   return (
-    <button onClick={onClick} className={defaultButtonStyles.view_demo_button}>
+    <button
+      onClick={onClick}
+      className={defaultButtonStyles.view_demo_button}
+      aria-label={ariaLabel}
+    >
       <svg
         width="24"
         height="24"
@@ -38,24 +50,27 @@ export const DemoButton = ({ onClick, text }) => {
   );
 };
 
-export const LessonButton = ({ onClick, text }) => {
+export const LessonButton = ({ onClick, text, ariaLabel }) => {
   return (
-    <button onClick={onClick} className={defaultButtonStyles.lesson_button}>
+    <button
+      aria-label={ariaLabel}
+      onClick={onClick}
+      className={defaultButtonStyles.lesson_button}
+    >
       <span className={defaultButtonStyles.lesson_text}>{text}</span>
     </button>
   );
 };
 
 // Call-To-Action
-export const CTAButton = ({ onClick, text }) => {
+export const CTAButton = ({ onClick, text, ariaLabel }) => {
   return (
     <button
+      aria-label={ariaLabel}
       className={defaultButtonStyles.cta_button}
       onClick={onClick}
     >
-      <span
-
-      >{text}</span>
+      <span>{text}</span>
       <svg
         width="24"
         height="24"

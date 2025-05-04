@@ -129,6 +129,7 @@ export const TeachWW = () => {
             loading="eager"
             alt=""
             className={styles.student}
+            quality={50}
           />
         </motion.div>
         <motion.div className={styles.group_one} variants={blobs}>

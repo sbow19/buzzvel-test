@@ -1,7 +1,4 @@
-export const Stroke = ({
-    stretchY,
-    stretchX,
-}) => {
+export const Stroke = ({ stretchY, stretchX }) => {
   return (
     <svg
       width={`${stretchX * 196}`}

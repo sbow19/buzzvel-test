@@ -1,14 +1,15 @@
 "use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+/* Custom components */
 import * as styles from "./meet_int.module.css";
 import * as slideStyles from "../../slides_styles.module.css";
 import { CTAButton } from "@/components/buttons/default_buttons";
 import { Airplane } from "@/components/graphics/airplane";
-import Image from "next/image";
-import useResize from "@/hooks/useResize";
-
-import { motion } from "framer-motion";
 import { text } from "@/animations/animations";
+import useResize from "@/hooks/useResize";
 
 export const MeetInt = () => {
   const screenWidth = useResize();
@@ -25,7 +26,6 @@ export const MeetInt = () => {
     >
       {/* Content */}
       <div className={styles.content_wrapper}>
-        
         <motion.h3 className={styles.header} variants={text}>
           Meet international students & teachers
           <div className={styles.airplane_wrapper}>
@@ -45,6 +45,10 @@ export const MeetInt = () => {
       </div>
 
       {/* Graphics */}
+      {/**
+       * Each column is styled in a unique way and are target using the
+       * :nth-child pseudo-selector. See styles module.
+       */}
       <div className={styles.graphics_wrapper}>
         <div className={styles.column}>
           <Image

@@ -31,7 +31,7 @@
   z-index: -1;
 }
 
-.logo{
+.logo {
   margin-top: 16px;
   margin-left: 16px;
 }
@@ -50,62 +50,7 @@
   font-weight: 500;
 }
 
-@media (min-width: 960px) {
-  .header_wrapper {
-    /* Header */
-
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 80px;
-    height: 96px;
-    gap:0
-
-  }
-  .header_nav_options {
-    position: relative;
-    z-index: 0;
-    /* Menu */
-
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
-    gap: 48px;
-
-    width: 515px;
-    height: 48px;
-
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-  }
-
-  .header_nav_options a {
-    margin-top: 0px;
-    font-size: 16px;
-    text-align: center;
-  }
-
-  .logo {
-    margin-right: 48px;
-    margin-top: 0
-  }
-
-  .account_button_wrapper{
-    padding-top: 12px
-  }
-  
-}
-
 .account_button_wrapper {
-  /* Buttons Group */
-
   /* Auto layout */
   display: flex;
   flex-direction: row;
@@ -125,7 +70,6 @@
 }
 
 .log_in {
-  /* Menu-item */
 
   /* Auto layout */
   display: flex;
@@ -157,3 +101,69 @@
   font-weight: 500;
   letter-spacing: 0.5px;
 }
+
+@media (min-width: 960px) {
+  .header_wrapper {
+    /* Auto layout */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 80px;
+    height: 96px;
+    gap: 0;
+  }
+  .header_nav_options {
+    position: relative;
+    z-index: 0;
+
+    /* Auto layout */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    gap: 48px;
+
+    width: 515px;
+    height: 48px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  .header_nav_options a {
+    margin-top: 0px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .logo {
+    margin-right: 48px;
+    margin-top: 0;
+  }
+
+  .account_button_wrapper {
+    padding-top: 12px;
+  }
+
+  a.resources_link {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .resources_link > span,
+  .resources_link > svg {
+    display: inline-block;
+  }
+
+  .resources_link > svg {
+    position: relative;
+    top: -2px;
+  }
+}
+
+
+
+

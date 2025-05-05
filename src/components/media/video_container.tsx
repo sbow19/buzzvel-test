@@ -1,3 +1,8 @@
+/* 
+  With video, swap for video element and use png banner image
+  while video is loaded lazily.
+ */
+
 import * as styles from "./video_container.module.css";
 import Image from "next/image";
 

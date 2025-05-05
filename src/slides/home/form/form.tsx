@@ -1,5 +1,3 @@
-"use client";
-
 import * as styles from "./form.module.css";
 import * as slideStyles from "../../slides_styles.module.css";
 

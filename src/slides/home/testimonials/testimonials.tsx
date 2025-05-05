@@ -1,3 +1,5 @@
+/* SSR component - Carousel handles client-side interaction and state */
+
 import * as styles from "./testimonials.module.css";
 import * as slideStyles from "../../slides_styles.module.css";
 

@@ -3,7 +3,7 @@ import { LessonButton } from "../buttons/default_buttons";
 import { BannerBadge } from "../banner_badge/banner_badge";
 import { motion } from "framer-motion";
 
-export const LessonCard = ({
+export const LessonCard: React.FC<LessonCardProps> = ({
   headerText,
   contentText,
   bannerText,

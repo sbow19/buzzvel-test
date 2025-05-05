@@ -4,6 +4,7 @@ import "./globals.css";
 
 const roboto = Roboto({
   subsets: ["latin"],
+  display: "swap",
 });
 
 /**
@@ -12,7 +13,7 @@ const roboto = Roboto({
  * Next Image components
  *
  * Meta tags:
- *  Opengraph
+ *  OpenGraph
  *  Twitter
  *  Robots directives
  *  Icons
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
   title: "Buzzvel FE Test",
   description: "Thank yo kindly for taking a look at my project!",
   keywords: ["teachers", "Buzzvel", "learning", "social", "online", "Next.js"],
+
   //Open graph
   openGraph: {
     title: "Teachers Buzzvel",
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     url: "https://buzzvel-test-eta.vercel.app/",
 
     // For the home segment, we can place an image in the directory of the
-    // route segment, eg Home, and Nextjs will automatically at the header tags
+    // route segment, e.g. Home, and Nextjs will automatically at the header tags
     // For OG and Twitter
     // images:[],
     locale: "en_US",
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
     creator: "@handle",
   },
 
-  //Robots/ indexing
+  // Robots/ indexing
   robots: {
     index: true,
     follow: true,
@@ -66,9 +68,9 @@ export const metadata: Metadata = {
   },
 
   // Canonicalize home page
-  alternates:{
-    canonical: '/'
-  }
+  alternates: {
+    canonical: "/",
+  },
 
   //Icons are placed in /app directory and generates headers for icon
 };
@@ -93,7 +95,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className}`}>
+      <body className={roboto.className}>
         {children}
 
         <script

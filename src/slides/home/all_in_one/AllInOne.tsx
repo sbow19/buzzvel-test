@@ -1,5 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
+
+/* Custom components */
 import * as styles from "./AllInOne.module.css";
 import * as slideStyles from "../../slides_styles.module.css";
 import { StrokedText } from "@/components/graphics/stroked_text";
@@ -11,9 +14,7 @@ import { BlobOne } from "@/components/graphics/blob";
 import { LessonCard } from "@/components/cards/lesson_card";
 import { appStyles } from "@/components/styles/prog_styles";
 import useResize from "@/hooks/useResize";
-
 import { text, cards } from "@/animations/animations";
-import { motion } from "framer-motion";
 
 export const AllInOne = () => {
   const screenWidth = useResize();
@@ -24,7 +25,7 @@ export const AllInOne = () => {
       variants={text}
       viewport={{
         amount: 0.2,
-        once: true
+        once: true,
       }}
       className={`${slideStyles.slide_wrapper} ${styles.wrapper}`}
     >
@@ -91,11 +92,12 @@ export const AllInOne = () => {
           <BlobOne height={400} width={336} />
         </div>
         <VideoContainer></VideoContainer>
-        <motion.aside 
-        initial="hidden"
-        whileInView="visible"
-        variants={cards}
-        className={styles.lessons_wrapper}>
+        <motion.aside
+          initial="hidden"
+          whileInView="visible"
+          variants={cards}
+          className={styles.lessons_wrapper}
+        >
           <LessonCard
             bannerText="Featured"
             headerText="The map of mathematics"

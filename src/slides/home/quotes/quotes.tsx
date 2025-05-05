@@ -1,29 +1,31 @@
 "use client";
-import * as slideStyles from "../../slides_styles.module.css";
-import * as styles from "./quotes.module.css";
-import { Quote, CirclePicker, SquareGrid } from "@/components/icons/icons";
-import { SpinBlock } from "@/components/graphics/spin_block";
-import Image from "next/image";
 
+import Image from "next/image";
 import {
   AnimatePresence,
   motion,
-  useMotionValueEvent,
   useScroll,
   useSpring,
   useTransform,
 } from "framer-motion";
-import { text } from "@/animations/animations";
 import { useEffect, useRef, useState } from "react";
 
+/* Custom components */
+import { text } from "@/animations/animations";
+import * as slideStyles from "../../slides_styles.module.css";
+import * as styles from "./quotes.module.css";
+import { Quote, SquareGrid } from "@/components/icons/icons";
+import { CirclePicker } from "@/components/icons/circle_picker";
+import { SpinBlock } from "@/components/graphics/spin_block";
+
 export const Quotes = () => {
-  // Track whether user has gone past  area
-  const spunRef = useRef(false);
+  // Track scroll progression of section
   const scrollRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: scrollRef,
   });
 
+  // Apply rotation transform mapped onto scroll progression
   const rotation = useTransform(scrollYProgress, [0, 1], [-20, 25], {
     clamp: true,
   });
@@ -32,19 +34,16 @@ export const Quotes = () => {
     stiffness: 150,
   });
 
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    // Stop future rotation when scrolling past
-    if (v >= 0.75) {
-      spunRef.current = true;
-    }
-  });
-
   //Timer to cycle through quotes
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
+  // Trigger cycle through quotes when slide enters viewport
   const observerRef = useRef(null);
+
+  // Track cycle execution callback
   const intervalRef = useRef(null);
 
+  // Callback to start quote slideshow cycle
   const startCycle = (entries) => {
     for (let entry of entries) {
       clearInterval(intervalRef.current);
@@ -56,7 +55,7 @@ export const Quotes = () => {
             }
             return prev + 1;
           });
-        }, 2500);
+        }, 2000);
       }
     }
   };
@@ -67,7 +66,7 @@ export const Quotes = () => {
     if (observerRef.current) return;
 
     observerRef.current = new IntersectionObserver(startCycle, {
-      threshold: 1,
+      threshold: 0.5,
     });
 
     observerRef.current.observe(scrollRef.current);
@@ -79,6 +78,7 @@ export const Quotes = () => {
     };
   }, []);
 
+  // Custom animation values for quote components 
   const content = {
     initial: { opacity: 0, x: 10 },
     animate: {
@@ -133,7 +133,7 @@ export const Quotes = () => {
             <b>{quotes[currentQuoteIndex].occupation}</b>
           </motion.p>
 
-          {/* TODO: Animate circles */}
+          {/* Circle picker changes highlight and width depending on  quote index*/}
           <div className={styles.top}>
             <div>
               <CirclePicker
@@ -154,8 +154,8 @@ export const Quotes = () => {
             <Image
               className={styles.image_container}
               src="/images/happy_student.png"
-              height={300}
-              width={300}
+              height={640}
+              width={504}
               alt=""
             />
             <motion.div

@@ -1,21 +1,22 @@
 "use client";
 
+import Image from "next/image";
+import { useMemo } from "react";
+import { motion } from "framer-motion";
+
+// Custom components
 import * as styles from "./TeachWW.module.css";
 import * as slideStyles from "../../slides_styles.module.css";
-import { StrokedText } from "@/components/graphics/stroked_text";
-import { OrangeButton } from "@/components/buttons/default_buttons";
-import { DemoButton } from "@/components/buttons/default_buttons";
-import { CompanyIcons } from "@/components/icons/icons";
 
-// Graphics components
+import { StrokedText } from "@/components/graphics/stroked_text";
+import { OrangeButton, DemoButton } from "@/components/buttons/default_buttons";
+import { CompanyIcons } from "@/components/icons/icons";
 import { BlobOne, BlobTwo } from "@/components/graphics/blob";
 import { SpeechBubbles } from "@/components/graphics/speech_bubbles";
 import { IntroGroup } from "@/components/icons/icons";
-import Image from "next/image";
-import useResize from "@/hooks/useResize";
-import { useMemo } from "react";
 
-import { motion } from "framer-motion";
+import useResize from "@/hooks/useResize";
+
 import { text } from "@/animations/animations";
 
 export const TeachWW = () => {
@@ -53,14 +54,11 @@ export const TeachWW = () => {
     return scale;
   }, [screenWidth]);
 
-
   const blobs = {
     visible: {
       opacity: 1,
       transition: {
-        delay: 0.5,
         when: "beforeChildren",
-        staggerChildren: 0.5,
       },
     },
     hidden: {
@@ -122,11 +120,12 @@ export const TeachWW = () => {
           <BlobTwo width={blobSize.x} height={blobSize.y} />
           <Image
             src="/images/student_phone.png"
-            width={500}
-            height={500}
-
+            width={310}
+            height={390}
             // Identified as LCP, so loading eagerly
             loading="eager"
+            priority
+            fetchPriority="high"
             alt=""
             className={styles.student}
             quality={50}
@@ -136,8 +135,8 @@ export const TeachWW = () => {
           <BlobOne width={blobSize.x} height={blobSize.y} />
           <Image
             src="/images/teacher_laptop.png"
-            width={500}
-            height={500}
+            width={191}
+            height={197}
             alt=""
             className={styles.teacher}
           />
@@ -146,7 +145,7 @@ export const TeachWW = () => {
         <div className={styles.group_three}>
           <IntroGroup />
         </div>
-        <motion.div className={styles.group_four}  variants={blobs}>
+        <motion.div className={styles.group_four} variants={blobs}>
           <SpeechBubbles stretchX={speechSize} stretchY={speechSize} />
         </motion.div>
       </motion.div>

@@ -14,6 +14,7 @@ export const TestimonialCarousel = () => {
   const screenWidth = useResize();
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Dynamically
   useEffect(() => {
     if (!window || !containerRef.current) return;
 
@@ -38,19 +39,24 @@ export const TestimonialCarousel = () => {
   const controls = useAnimation();
   const x = useMotionValue(0);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
+
+  // Stop cycling through testimonial cards
   const stopAutoScroll = () => {
     setHasUserInteracted(true);
     controls.stop();
   };
 
-  const activateCarousel = (newContainerWidth, newScreenWidth ) => {
+  const activateCarousel = (newContainerWidth, newScreenWidth) => {
     clearInterval(interval.current);
 
     interval.current = setInterval(() => {
       const currentX = x.get();
       // Translate by width of testimonial card until larger than container width
       // clamp to max scroll
-      const newX = Math.max(currentX - 309, -newContainerWidth + newScreenWidth / 2);
+      const newX = Math.max(
+        currentX - 309,
+        -newContainerWidth + newScreenWidth / 2
+      );
       controls.start({
         x: newX,
         transition: {
@@ -60,41 +66,52 @@ export const TestimonialCarousel = () => {
           damping: 30,
         },
       });
-    }, 3000);
+    }, 2200);
   };
 
+  // Reference to automatic cycling controls 
   const interval = useRef(null);
-  const observerRef = useRef(null)
-  useEffect(() => {
-    // Remove observer
-    if(observerRef.current){
-      observerRef.current.unobserve(containerRef.current)
-    }
+  const observerRef = useRef(null);
 
+  /**
+   * Observe when slide comes into viewport to trigger automatic card cycling
+   * 
+   * Must reset when containerWidth or screenWidth changes as amount that carousel must move
+   * will change on resize.
+   * 
+   * */ 
+  useEffect(() => {
+    // Remove observer and set new one with new  screen
+    if (observerRef.current) {
+      observerRef.current.unobserve(containerRef.current);
+    }
 
     if (hasUserInteracted || !containerRef.current) return;
 
     const options = {
-      threshold: 0.5,
+      threshold: 0.25,
     };
     observerRef.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry)=>{
-        if(entry.isIntersecting){
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
           activateCarousel(containerWidth, screenWidth);
         } else {
-          clearInterval(interval.current)
+          clearInterval(interval.current);
         }
-      })
+      });
     }, options);
 
-    observerRef.current.observe(containerRef.current)
+    observerRef.current.observe(containerRef.current);
 
     return () => clearInterval(interval.current);
   }, [hasUserInteracted, containerWidth, screenWidth]);
 
   // Button controls
   const handleClick = (direction: number) => {
-    clearInterval(interval.current)
+
+    // Stop automatic cycling of cards
+    clearInterval(interval.current);
+
     setHasUserInteracted(true);
     controls.stop();
 
@@ -125,6 +142,7 @@ export const TestimonialCarousel = () => {
         />
       </div>
 
+      {/* Make testimonials draggable. Dragging pauses the automatic cycling through cards */}
       <motion.div
         className={styles.carousel_container}
         drag="x"

@@ -1,7 +1,11 @@
+/**
+ *  Keep track of screen width when resized.
+ */
+
 import { useEffect, useState } from "react";
 
 const useResize = () => {
-  const [screenWidth, setScreenWidth] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(393);
   useEffect(() => {
     // Check if rendering context if frontend
     if (!window) return;

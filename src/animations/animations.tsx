@@ -1,4 +1,4 @@
-/* Standrd animation variants reused throghout page */
+/* Standard animation variants reused throughout page for consistent orchestration */
 
 // Text fade in orchestration
 export const text = {

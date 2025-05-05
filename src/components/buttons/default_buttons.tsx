@@ -1,8 +1,8 @@
-/* Default buttons. If customisation desired, use button template */
+/* Default buttons. If customisation desired, use ButtonTemplate comp*/
 "use client";
 import * as defaultButtonStyles from "./default_button.module.css";
 
-export const OrangeButton = ({ onClick, text, ariaLabel }) => {
+export const OrangeButton: React.FC<DefaultButtonProps> = ({ onClick, text, ariaLabel }) => {
   return (
     <button
       onClick={onClick}
@@ -14,7 +14,7 @@ export const OrangeButton = ({ onClick, text, ariaLabel }) => {
   );
 };
 
-export const BlueButton = ({ onClick, text, ariaLabel }) => {
+export const BlueButton: React.FC<DefaultButtonProps> = ({ onClick, text, ariaLabel }) => {
   return (
     <button
       onClick={onClick}
@@ -26,7 +26,7 @@ export const BlueButton = ({ onClick, text, ariaLabel }) => {
   );
 };
 
-export const DemoButton = ({ onClick, text, ariaLabel }) => {
+export const DemoButton: React.FC<DefaultButtonProps> = ({ onClick, text, ariaLabel }) => {
   return (
     <button
       onClick={onClick}
@@ -50,7 +50,7 @@ export const DemoButton = ({ onClick, text, ariaLabel }) => {
   );
 };
 
-export const LessonButton = ({ onClick, text, ariaLabel }) => {
+export const LessonButton: React.FC<DefaultButtonProps> = ({ onClick, text, ariaLabel }) => {
   return (
     <button
       aria-label={ariaLabel}
@@ -63,7 +63,7 @@ export const LessonButton = ({ onClick, text, ariaLabel }) => {
 };
 
 // Call-To-Action
-export const CTAButton = ({ onClick, text, ariaLabel }) => {
+export const CTAButton: React.FC<DefaultButtonProps> = ({ onClick, text, ariaLabel }) => {
   return (
     <button
       aria-label={ariaLabel}

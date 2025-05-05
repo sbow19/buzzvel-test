@@ -2,30 +2,30 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Waffle } from "@/components/icons/icons";
-import * as styles from "./header_bar.module.css";
-import { useCallback, useEffect, useState } from "react";
-import useResize from "@/hooks/useResize";
-import { ButtonTemplate } from "@/components/buttons/button_template";
-import { appStyles } from "@/components/styles/prog_styles";
-
 import { AnimatePresence, motion } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
+
+// Custom components and content
+import * as styles from "./header_bar.module.css";
+import useResize from "@/hooks/useResize";
+import { appStyles } from "@/components/styles/prog_styles";
+import { ButtonTemplate } from "@/components/buttons/button_template";
+import { DropdownArrow } from "@/components/icons/icons";
+import { Waffle } from "@/components/icons/waffle";
+
 
 export const HeaderBar = () => {
-  // Track the screen width
   const screenWidth = useResize();
 
-  // Set dropdown active (mobile or desktop)
+  // Set dropdown visibility
   const [menuActive, setMenuActive] = useState(false);
 
   useEffect(() => {
-    if (screenWidth >= 960) setMenuActive(true)
-    if(screenWidth <960) setMenuActive(false);
+    if (screenWidth >= 960) setMenuActive(true);
+    if (screenWidth < 960) setMenuActive(false);
   }, [screenWidth]);
 
   const handleSetMenuActive = useCallback(() => {
-    // TODO: check screen size to activate
-
     setMenuActive((prev) => !prev);
   }, [menuActive]);
 
@@ -37,10 +37,9 @@ export const HeaderBar = () => {
         width={103}
         alt="Teach"
         className={styles.logo}
-        
       />
 
-      {/* MOBILE: hidden dropdown */}
+      {/* NAV BAR */}
       <AnimatePresence initial={true}>
         {menuActive ? (
           <motion.nav
@@ -51,7 +50,6 @@ export const HeaderBar = () => {
             animate={{
               top: menuActive ? 67 : -120,
 
-              
               y: screenWidth >= 960 ? -51 : 0,
               opacity: 1,
             }}
@@ -64,11 +62,19 @@ export const HeaderBar = () => {
             <Link href="/products">Products</Link>
             <Link href="/solutions">Solutions</Link>
             <Link href="/pricing">Pricing</Link>
-            <Link href="/resources">Resources</Link>
+            <Link 
+            
+            href="/resources"
+            className={styles.resources_link}
+            >
+              <span>Resources</span>
+              {screenWidth >= 960 ? <DropdownArrow /> : <></>}
+            </Link>
           </motion.nav>
         ) : null}
       </AnimatePresence>
 
+      
       {screenWidth >= 960 ? <></> : <Waffle onClick={handleSetMenuActive} />}
 
       {screenWidth >= 960 ? (

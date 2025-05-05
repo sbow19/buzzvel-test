@@ -62,28 +62,41 @@ export const FloatingCollage = ({ sceneItems }) => {
     };
   }, []);
 
-  const screenWidth = useResize()
-  useEffect(()=>{
-    if(!collageSceneRef.current) return
-    collageSceneRef.current.resize()
-  }, [screenWidth])
+  const screenWidth = useResize();
+  useEffect(() => {
+    if (!collageSceneRef.current) return;
+    collageSceneRef.current.resize();
+  }, [screenWidth]);
 
   return <canvas ref={canvasRef} className={styles.wrapper} />;
 };
 
 // Control animation behavour and location of elements on screen
-type SourceItem = {
-  src: "";
-  type: "";
-};
 class CollageScene {
   canvas: HTMLCanvasElement | null = null;
   ctx: CanvasRenderingContext2D | null = null;
+
   sceneItems: CollageItem[] = [];
+
+  /**
+   * RequestAnimationFrame id
+   */
   animationId: number | null = null;
+
+  /**
+   * Initial scale of each sceneitem. Starts at 1
+   */
   scales: number[] = [];
+
+  /**
+   * Initial shrink or grow  flag for each sceneItem, -1 for shrink 1 for grow
+   */
   directions: number[] = [];
-  windowWidth: number  = 0
+
+  /**
+   * Used for calculating placement and collision
+   */
+  windowWidth: number = 0;
 
   constructor(canvas: HTMLCanvasElement, sceneItems: SourceItem[]) {
     this.canvas = canvas;
@@ -107,23 +120,26 @@ class CollageScene {
     this.placeItems();
 
     // Set window width
-    this.windowWidth = window.innerWidth
+    this.windowWidth = window.innerWidth;
   }
 
-  // Restart animation on resize
+  /**
+   * Trigger replacement of elements when resizing window crosses 960 boundary.
+   * ONly trigger when the boundary is crossed for performance. 960 boundary is
+   * when the screen shifts to landscape.
+   */
   resize() {
-
     // Check if resize crossed boundary
     const width = window.innerWidth;
 
     // If the resizing crossed the 960 threshold, trigger resize
-    if(width < 960 && this.windowWidth >= 960){
-      this.placeItems()
-    } else if (width >= 960 && this.windowWidth < 960){
-      this.placeItems()
+    if (width < 960 && this.windowWidth >= 960) {
+      this.placeItems();
+    } else if (width >= 960 && this.windowWidth < 960) {
+      this.placeItems();
     }
 
-    this.windowWidth = width 
+    this.windowWidth = width;
   }
 
   // Start animation loop
@@ -136,32 +152,37 @@ class CollageScene {
       }
     }
 
+    // Max/Min sizes of sceneItems
+    const minSize = 16;
+    const maxSize = 64;
+
+    // Variation of sceneitem size
+    const amplitude = (maxSize - minSize) / 2;
+    const midpoint = minSize + amplitude;
     // start animation for all items
     const animateAll = () => {
       // Clear context for next render cycle
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-      const minSize = 16;
-      const maxSize = 64;
-      const amplitude = (maxSize - minSize) / 2;
-      const midpoint = minSize + amplitude;
 
       for (let i = 0; i < this.sceneItems.length; i++) {
         const item = this.sceneItems[i];
         const scale = this.scales[i];
         const direction = this.directions[i];
 
-        const currentSize = midpoint + amplitude * Math.cos(scale);
+        // Oscillate between min and max points using a cos wave
+        const currentSize = midpoint + (amplitude * Math.cos(scale));
 
         this.ctx.drawImage(
           item.img,
+
+          //Ensure that image grows and shrinks in place
           item.imgPosition.x - currentSize / 2,
           item.imgPosition.y - currentSize / 2,
           currentSize,
           currentSize
         );
 
-        // Update scale for next frame
+        // Update scale for next frame for each sceneitem
         this.scales[i] += Math.random() * 0.02 * direction;
       }
 
@@ -190,10 +211,15 @@ class CollageScene {
     const canvasBoundingBox = this.canvas?.getBoundingClientRect();
 
     for (let index = 0; index < this.sceneItems.length; index++) {
+
+      // Potential coordinates of scene item on canvas
       let randX: number = 0;
       let randY: number = 0;
       const sceneItem = this.sceneItems[index];
-      // Determine bounding box. Continue until no collision detected
+
+      // Determine a bounding box of scene item such that it does not collide
+      // with another bounding box, or that it goes too far
+      // off the canvas. Continue until no collision detected.
       while (true) {
         // Get random point on canvas screen
         [randX, randY] = generateRandomPoint(canvasBoundingBox);
@@ -232,9 +258,14 @@ class CollageScene {
           },
         };
 
+        // Check for collision with current sceneitems in array
         let collision = false;
         collision = this.sceneItems.some((nextItem, i) => {
+          // Return no collision if comparing with self
           if (index === i) return false;
+
+          // Compare bounding box with sceneItem. Returns false if no bounding box set
+          // on sceneItem being compared to.
           return nextItem.isCollision(boundingBox);
         });
 
@@ -244,6 +275,7 @@ class CollageScene {
         }
       }
 
+      // If image already loaded, then draw onto canvas
       if (sceneItem.img) {
         sceneItem.setImagePosition(randX, randY);
         this.ctx?.drawImage(
@@ -254,6 +286,8 @@ class CollageScene {
           sceneItem.defaultSize
         );
       }
+
+      //... otherwise load image
       const img = new Image();
       sceneItem.setImage(img);
       sceneItem.setImagePosition(randX, randY);
@@ -273,21 +307,19 @@ class CollageScene {
   }
 }
 
-type BoundingBox = {
-  topLeft: { x: number; y: number };
-  bottomRight: { x: number; y: number };
-};
-
 class CollageItem {
   itemPath: string | null = null;
   itemType: string = "";
+
   // Any number between 16x16, 32x32 or 64x64
   defaultSize: number = 16;
   imgPosition: {
     x: number;
     y: number;
   } | null = null;
+
   boundingBox: BoundingBox | null;
+
   img: null | HTMLImageElement = null;
   constructor(
     itemPath: string,
@@ -301,7 +333,7 @@ class CollageItem {
     this.itemType = itemType;
   }
 
-  // Check whethe incoming bounding box overlaps with this item's box using AABB overlap formula
+  // Check whether incoming bounding box overlaps with this item's box using AABB overlap formula
   isCollision(boundingCoords: BoundingBox): boolean {
     if (!this.boundingBox) return false;
     if (
@@ -336,6 +368,13 @@ class CollageItem {
   }
 }
 
+/**
+ * Return a random point of the canvas, which is
+ * used to determine the placement of an object on the
+ * canvas
+ * @param {DOMRect} boundingBox  // Canvas dimensions
+ * @returns {[number, number]}  // X, Y
+ */
 const generateRandomPoint = (boundingBox: DOMRect) => {
   const xRange = boundingBox.right - boundingBox.left;
   const yRange = boundingBox.bottom - boundingBox.top;

@@ -1,6 +1,6 @@
 import * as styles from "./nav_button.module.css";
 
-export const NavButtonLeft = ({ onClick, ariaLabel }) => {
+export const NavButtonLeft: React.FC<DefaultButtonProps> = ({ onClick, ariaLabel }) => {
   return (
     <button
       aria-label={ariaLabel}
@@ -94,7 +94,7 @@ export const NavButtonLeft = ({ onClick, ariaLabel }) => {
   );
 };
 
-export const NavButtonRight = ({ onClick, ariaLabel }) => {
+export const NavButtonRight: React.FC<DefaultButtonProps> = ({ onClick, ariaLabel }) => {
   return (
     <button
       aria-label={ariaLabel}

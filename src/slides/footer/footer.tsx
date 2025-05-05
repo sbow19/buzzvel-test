@@ -3,6 +3,12 @@ import { AltTeachLogo } from "@/components/icons/icons";
 import Link from "next/link";
 import { BannerBadge } from "@/components/banner_badge/banner_badge";
 import { appStyles } from "@/components/styles/prog_styles";
+import {
+  RightArrow,
+  Globe,
+  Accessibility,
+  Euro,
+} from "@/components/icons/icons";
 
 const footerList: FooterLinkObject[] = [
   {
@@ -132,12 +138,19 @@ const footerList: FooterLinkObject[] = [
       {
         name: "Request Demo",
         link: "",
-        badge: null,
+        badge: <RightArrow />,
       },
     ],
   },
 ];
 
+{
+  /* 
+  Footer list can be updated dynamically using server side components if needed,
+  by passing in a FooterLinkObject to FooterList
+  
+*/
+}
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
@@ -147,16 +160,32 @@ export const Footer = () => {
         <p className={styles.copyright}>uteach @ 2023. All rights reserved.</p>
         <ul className={styles.bottom_link_wrapper}>
           <li>
-            <Link href="">Terms</Link>
+            <Link href="">
+              <span>Terms</span>
+            </Link>
           </li>
           <li>
-            <Link href="">Privacy</Link>
+            <Link href="">
+              <span>Privacy</span>
+            </Link>
           </li>
           <li>
-            <Link href="">EN</Link>
+            <Link href="">
+              <Globe />
+
+              <span>EN</span>
+            </Link>
           </li>
           <li>
-            <Link href="">EUR</Link>
+            <Link href="">
+              <Euro />
+              <span>EUR</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="" aria-label="Accessibility">
+              <Accessibility />
+            </Link>
           </li>
         </ul>
       </div>
@@ -193,15 +222,4 @@ const FooterList: React.FC<{
       })}
     </ul>
   );
-};
-
-type LinkObject = {
-  name: string;
-  link: string;
-  badge: React.ReactElement | null;
-};
-
-type FooterLinkObject = {
-  title: string;
-  subPaths: LinkObject[];
 };

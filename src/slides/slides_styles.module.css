@@ -1,6 +1,11 @@
-.slide_wrapper {
-  /* Section */
+/*
+  Default styles for slide containers.
 
+  Page is divided into separate sections, or slides, which contain thematically similar
+  content.
+*/
+
+.slide_wrapper {
   /* Auto layout */
   display: flex;
   flex-direction: column;
@@ -10,7 +15,6 @@
 
   width: 100%;
   height: auto;
-
 
   /* Inside auto layout */
   flex: none;
@@ -24,13 +28,10 @@
     padding-bottom: 48px
   }
 }
-
 @media (min-width: 960px) {
   .slide_wrapper {
-    /* Section */
 
     /* Auto layout */
-    display: flex;
     flex-direction: row;
     align-items: center;
     padding: 80px;

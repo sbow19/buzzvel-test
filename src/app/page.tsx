@@ -10,6 +10,8 @@ import { Testimonials } from "@/slides/home/testimonials/testimonials";
 import { Features } from "@/slides/home/features/features";
 import { CTAJoin } from "@/slides/home/cta_join/cta_join";
 import { Form } from "@/slides/home/form/form";
+
+
 export default function Home() {
   return (
     <>

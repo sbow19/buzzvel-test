@@ -6,14 +6,9 @@ import { OrangeButton } from "@/components/buttons/default_buttons";
 import { FloatingCollage } from "@/components/canvas/floating_collage";
 import { useMemo } from "react";
 
-type SourceItem = {
-  src:string
-  type: string
-}
-
 export const CTAJoin = () => {
 
-  // Get image set
+  // Thumbnail image sources
   const set1 = useMemo(() => {
     const imageSet: SourceItem[] = [];
     for (let i = 1; i < 15; i++) {
@@ -27,7 +22,7 @@ export const CTAJoin = () => {
     return imageSet;
   }, []);
 
-  // Get svg set
+  // SVG image sources
   const set2 = useMemo(()=>{
     const imageSet: SourceItem[] = [];
     for (let i = 1; i < 12; i++) {

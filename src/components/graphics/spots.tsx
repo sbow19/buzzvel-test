@@ -1,15 +1,11 @@
-import { motion } from "framer-motion";
 import * as styles from "./spots.module.css";
 
-// import { useEffect, useState } from "react";
-
 export const Spots = () => {
-
   return (
     <svg
       className={styles.blob_wrapper}
-      width='125'
-      height='521'
+      width="125"
+      height="521"
       viewBox={`0 0 125 521`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

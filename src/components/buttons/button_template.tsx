@@ -1,8 +1,16 @@
 'use client'
+
+/* 
+    Attempt to create a wrapper for all buttons on site,
+    which imposes some key styles such as border radius,
+    width, height. Can be overridden
+
+*/
+
 import { useMemo } from "react"
 import * as buttonStyles from "./button_template.module.css"
 
-export const ButtonTemplate = ({
+export const ButtonTemplate: React.FC<ButtonTemplateProps> = ({
     onClick,
     height,
     width,
@@ -15,9 +23,8 @@ export const ButtonTemplate = ({
 
     // Apply style classnames from parent component
     const stylesList = useMemo(()=>{
-
         let classString = ''
-        for (let style of textStyle){
+        for (const style of textStyle){
             classString += ` ${style}`
         }
         return classString

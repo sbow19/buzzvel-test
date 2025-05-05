@@ -1,5 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
+
+/* Custom components */
 import * as styles from "./features.module.css";
 import * as slideStyles from "../../slides_styles.module.css";
 import { CTAButton } from "@/components/buttons/default_buttons";
@@ -9,12 +12,9 @@ import { LessonCard } from "@/components/cards/lesson_card";
 import { appStyles } from "@/components/styles/prog_styles";
 import { FeaturesImage } from "@/components/images/features_img";
 import useResize from "@/hooks/useResize";
-
 import { text, cardRows } from "@/animations/animations";
-import { motion } from "framer-motion";
 
 export const Features = () => {
-  // TODO: Resize blob on screen  size change
   const screenWidth = useResize();
   return (
     <section className={`${slideStyles.slide_wrapper} ${styles.wrapper}`}>

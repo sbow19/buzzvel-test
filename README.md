@@ -16,8 +16,8 @@ As specified, I created a page that is:
 - Animated, using a mixture of Framer Motion and CSS animations. The animations are smoothly integrated into
   the flow of the page without overloading the user.
 
-- Leverages the features of **Next.js**, such MetaData API, App routing, and Image and Link components for reducing
-  layout shift and lazy loading.
+- Leverages the features of **Next.js**, such MetaData API, App routing, and Image and Link components for lazy loading and reducing
+  cumulative layout shift.
 
 - Performant, scoring above 90 on all Lighthouse parameters on Mobile and Desktop.
 

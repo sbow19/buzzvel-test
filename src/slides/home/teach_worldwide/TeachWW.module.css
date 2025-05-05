@@ -195,6 +195,7 @@
     flex-direction: column;
     align-items: flex-start;
     margin: 0;
+    margin-right: auto;
     
     padding: 0px;
     gap: 80px;

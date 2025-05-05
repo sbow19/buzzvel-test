@@ -6,6 +6,8 @@ to showcase my skills.
 
 You can access the live version of the project here on vercel: [https://buzzvel-test-eta.vercel.app/](https://buzzvel-test-eta.vercel.app/)
 
+You can access a demo video here: [https://vimeo.com/1081542887](https://vimeo.com/1081542887)
+
 As specified, I created a page that is:
 
 - Fully responsive and displays nicely on different screen sizes, mobile, and desktop.

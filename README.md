@@ -31,24 +31,23 @@ As specified, I created a page that is:
 ## Tech Stack / Features
 
 - **Framework**: Next.js.
-
-* Next.js offers a useful developer suite for using common tools such as TypeScript,Webpack, optimized Image elements,
+  -  Next.js offers a useful developer suite for using common tools such as TypeScript,Webpack, optimized Image elements,
   and page routing, which make the developer experience much smoother and faster.
 
 - **Language**: TypeScript.
 
-* Combined with JSDocs, TypeScript is my preferred language to keep type consistency across the app.
+  - Combined with JSDocs, TypeScript is my preferred language to keep type consistency across the app.
 
 - **Styling**: CSS Modules.
 
-* Scoped to each component for project structure clarity.
+  - Scoped to each component for project structure clarity.
 
 - **Animations**: Framer-Motion and CSS animations.
 
-* Use of fade-in and fade-out transitions, orchestrated animations with variants and scroll progress mapping.
-* Use of canvas to animate dynamic image sizes, to create a sparkling/bubbling effect.
-* Use of CSS keyframes to animate svg components to create sparkling effect.
-* Automatic and draggable carousels with IntersectionObserver and Framer-Motion. 
+  - Use of fade-in and fade-out transitions, orchestrated animations with variants and scroll progress mapping.
+  - Use of canvas to animate dynamic image sizes, to create a sparkling/bubbling effect.
+  - Use of CSS keyframes to animate svg components to create sparkling effect.
+  - Automatic and draggable carousels with IntersectionObserver and Framer-Motion. 
 
 - **SEO**: Meta tags with `next/head`, semantic HTML tags, and next-sitemap.
 

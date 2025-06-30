@@ -1,14 +1,11 @@
-# Buzzvel Frontend Developer Test 2025
+# Teacher Platform Demo Landing Page
 
 **HELLO**
-This project is a submission for the Buzzvel Frontend Developer Test 2025. Thank you kindly for the opportunity
-to showcase my skills.
-
 You can access the live version of the project here on vercel: [https://buzzvel-test-eta.vercel.app/](https://buzzvel-test-eta.vercel.app/)
 
 You can access a demo video here: [https://vimeo.com/1081542887](https://vimeo.com/1081542887)
 
-As specified, I created a page that is:
+I created a page that is:
 
 - Fully responsive and displays nicely on different screen sizes, mobile, and desktop.
 
@@ -68,8 +65,8 @@ As specified, I created a page that is:
 
 ```bash
 # Clone this repository
-git clone https://github.com/your-username/buzzvel-fe-test.git
-cd buzzvel-fe-test
+git clone https://github.com/sbow19/demo-teacher.git
+cd demo-teacher
 
 # Install dependencies
 npm install
